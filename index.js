@@ -40,9 +40,13 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(kopyalananKoli){
+
+  const yeniDizi = [...kopyalananKoli];
+  return yeniDizi;
 }
+console.log(kopyala (orijinalTatlar))
+
 
 
 /* Görev 2:
@@ -56,9 +60,15 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(dizi){
+  if (dizi.length === 25) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
+console.log("dizi 25 çeşit mi?:",dizi25Cesitmi(orijinalTatlar));
 
 
 /* Görev 3:
@@ -74,9 +84,13 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(tatlar, yenicesit ) {
+  tatlar.unshift (yenicesit);
+  return tatlar  //bazı fonksiyonlar üzerinde çalıştığımız array i değiştirir, unshift de bunlardan biri. o yüzden call u ilk parametreyle yaptık. üzerinde çalıştığımız parametre o oldu.
 }
+console.log (cesitEkle(orijinalTatlar, "Kakule"));
+
+// const yenidizi = [yenicesit, ...tatlar]  return yenidizi   alternatif çözüm ama istediğimiz çözüm değil. orj arrayi değiştirmesini istiyorux çünkü.
 
 
 /* Cörev 4:
@@ -92,9 +106,13 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(tatlar){
+  tatlar.pop()
+  return tatlar
 }
+console.log (sonCesitiKaldir(orijinalTatlar))
+
+//ileride REACT ta işimize yarayacak bir detay bu orj arrayin üzerinden işleme devam ettirmek
 
 
 /* Görev 5:
@@ -108,9 +126,10 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(tatlar,sayi){
+  return tatlar[sayi]
 }
+console.log (indekstekiCesitiGetir(orijinalTatlar,2))
 
 
 /* Görev 6:
@@ -128,9 +147,12 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(tatlar,cikancesit){
+  const sirasi = tatlar.indexOf(cikancesit);
+  tatlar.splice (sirasi, 1)
+  return tatlar
 }
+console.log ("çeşit çıkartma:", ismeGoreCesitCikar(orijinalTatlar, "Tarçın"))
 
 
 /* Görev 7:
@@ -154,9 +176,16 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(tatlar, filtre){
+  let yeniler = []
+  for (let i = 0; i <tatlar.length; i++) {
+    if (tatlar[i].includes (filtre)) {
+      yeniler.push (tatlar[i]);
+  }
+  }
+  return yeniler;
 }
+console.log ("pasta çeşitleri:", ismeGoreFiltrele(orijinalTatlar, "Çikolata"))
 
 
 
